@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Raiyan Ali Syed — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F7FB;
+    --surface:#FFFFFF;
+    --ink:#10192B;
+    --ink-soft:#45536B;
+    --primary:#1E4FA6;
+    --signal:#2E9E6D;
+    --line:#D8E1EC;
+    color-scheme: light;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-sizing: border-box;
+  }
+  *{box-sizing:inherit;}
+  html{scroll-padding-top: env(safe-area-inset-top, 0px);}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, 'Times New Roman', serif;
+    font-size:17px;
+    line-height:1.65;
+  }
+  h1,h2,h3,.mono{
+    font-family:'Space Grotesk', 'Segoe UI', Arial, sans-serif;
+  }
+  a{color:var(--primary);}
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px;}
+  .prose{max-width:640px;}
+
+  header.hero{
+    padding:96px 0 72px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{display:flex;gap:56px;align-items:flex-start;flex-wrap:wrap;}
+  .hero-text{flex:1 1 420px;}
+  .kicker{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0 0 18px;
+  }
+  h1{
+    font-size:clamp(38px,6vw,58px);
+    font-weight:700;
+    line-height:1.05;
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  .role-line{
+    font-size:19px;
+    color:var(--ink-soft);
+    margin:0 0 28px;
+    max-width:520px;
+  }
+  .contact-row{display:flex;flex-wrap:wrap;gap:18px 26px;font-family:'Space Grotesk',sans-serif;font-size:14.5px;}
+  .contact-row a{text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;}
+  .contact-row a:hover{border-color:var(--primary);}
+
+  .pulse{flex:0 0 220px;padding-top:8px;}
+  svg{display:block;max-width:100%;}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h2{
+    font-size:14px;
+    font-weight:600;
+    color:var(--primary);
+    letter-spacing:0.02em;
+    margin:0 0 28px;
+  }
+
+  .timeline{display:flex;flex-direction:column;gap:0;}
+  .titem{display:flex;gap:28px;padding:0 0 36px;position:relative;}
+  .titem:last-child{padding-bottom:0;}
+  .trail{width:12px;flex:0 0 12px;position:relative;display:flex;justify-content:center;}
+  .trail::before{
+    content:'';position:absolute;top:6px;bottom:-36px;width:1px;background:var(--line);
+  }
+  .titem:last-child .trail::before{display:none;}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--signal);margin-top:6px;flex:0 0 10px;z-index:1;}
+  .tbody{flex:1;}
+  .tdate{font-family:'Space Grotesk',sans-serif;font-size:13.5px;color:var(--ink-soft);margin-bottom:6px;}
+  .trole{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;margin:0 0 4px;}
+  .torg{color:var(--ink-soft);font-size:15px;margin-bottom:10px;font-family:'Space Grotesk',sans-serif;}
+  .titem p{margin:0;max-width:600px;}
+
+  .skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;}
+  .sg-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;margin:0 0 12px;}
+  .sg-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 10px;}
+  .sg-list li{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13.5px;
+    color:var(--ink);
+    background:var(--surface);
+    border:1px solid var(--line);
+    padding:6px 12px;
+    border-radius:3px;
+  }
+
+  .focus-list{display:flex;flex-direction:column;gap:22px;max-width:680px;}
+  .focus-item{display:flex;gap:16px;align-items:baseline;}
+  .focus-item .mark{color:var(--signal);font-family:'Space Grotesk',sans-serif;font-size:14px;flex:0 0 20px;}
+  .focus-item h3{font-size:17px;margin:0 0 4px;font-weight:600;}
+  .focus-item p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+
+  .article-list{display:flex;flex-direction:column;gap:28px;max-width:680px;}
+  .article-item{padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:3px;}
+  .article-item h3{font-size:17px;font-weight:600;margin:2px 0 8px;}
+  .article-item p{margin:0;color:var(--ink-soft);font-size:15px;}
+
+  footer{padding:56px 0 80px;}
+  footer .contact-row{margin-bottom:18px;}
+  footer p{color:var(--ink-soft);font-size:14px;margin:0;}
+
+  @media (max-width:640px){
+    header.hero{padding:64px 0 48px;}
+    .pulse{display:none;}
+    section{padding:48px 0;}
+  }
+
+  .hero-text{opacity:0;transform:translateY(14px);animation:heroIn 0.7s ease-out 0.1s forwards;}
+  .pulse{animation:heroIn 0.8s ease-out 0.3s forwards;opacity:0;transform:translateY(14px);}
+  @keyframes heroIn{to{opacity:1;transform:translateY(0);}}
+
+  .reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease-out, transform 0.7s ease-out;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-text,.pulse{animation:none;opacity:1;transform:none;}
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="kicker">Bengaluru, India</p>
+      <h1>Raiyan Ali Syed</h1>
+      <p class="role-line">Dynatrace Services Consultant at Ionidea, working across Observability, data, and process — currently exploring roles in observability, reliability, production operations, Data Science and AI.</p>
+      <div class="contact-row">
+        <a href="mailto:syedraiyanali@gmail.com">syedraiyanali@gmail.com</a>
+        <a href="tel:+919100664138">+91 91006 64138</a>
+        <a href="https://www.linkedin.com/in/raiyan-ali-syed-a9668a270/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="pulse" aria-hidden="true">
+      <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="0,90 40,90 55,40 70,110 85,20 100,90 220,90" fill="none" stroke="#1E4FA6" stroke-width="2"/>
+        <circle cx="85" cy="20" r="4" fill="#2E9E6D"/>
+        <line x1="0" y1="115" x2="220" y2="115" stroke="#D8E1EC" stroke-width="1"/>
+        <line x1="0" y1="65" x2="220" y2="65" stroke="#D8E1EC" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="reveal" id="about">
+  <div class="wrap prose">
+    <h2>About</h2>
+    <p>I graduated in 2025 with a B.Tech in Computer Science and Engineering — Data Science from Madanapalle Institute of Technology and Science. Since then I've worked as a Dynatrace Services Consultant at Ionidea, monitoring live applications, diagnosing issues as they surface, and configuring observability environments for client teams. Before that, I spent time in Taiwan researching how AI systems behave and where their limits are, which shaped how I think about systems that need to be watched closely rather than trusted blindly.</p>
+    <p>I'm now looking at roles that sit at the intersection of data, operations, and reliability — places where the same instincts for reading a dashboard and catching an anomaly early actually decide outcomes.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="titem">
+        <div class="trail"><div class="dot"></div></div>
+        <div class="tbody">
+          <div class="tdate">Jul 2025 — Present</div>
+          <div class="trole">Dynatrace Services Consultant</div>
+          <div class="torg">Dynatrace (contracted via Ionidea), Bengaluru</div>
+          <p>Monitor applications in production, run problem analysis when incidents surface, and configure the Dynatrace environment to keep observability tasks running cleanly for client teams.</p>
+        </div>
+      </div>
+      <div class="titem">
+        <div class="trail"><div class="dot"></div></div>
+        <div class="tbody">
+          <div class="tdate">Research Internship</div>
+          <div class="trole">AI Research Intern</div>
+          <div class="torg">CCRI Lab, Asia University, Taiwan</div>
+          <p>Studied practical AI implementations and their limitations, and published short articles distilling those findings for a wider audience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <h2>Skills &amp; Tools</h2>
+    <div class="skill-groups">
+      <div>
+        <p class="sg-title">Data &amp; Analytics</p>
+        <ul class="sg-list">
+          <li>Data Science</li><li>Excel</li><li>Python</li><li>Power BI</li><li>Tableau</li><li>Machine Learning</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sg-title">Observability &amp; Monitoring</p>
+        <ul class="sg-list">
+          <li>Application Performance Monitoring (APM)</li><li>Log Analysis</li><li>Incident Management</li><li>Dynatrace</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sg-title">Operations &amp; Ticketing</p>
+        <ul class="sg-list">
+          <li>ServiceNow</li><li>Jira</li><li>Production Support</li><li>Incident & Problem Management</li><li>Root Cause Analysis</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sg-title">Cloud &amp; Infrastructure</p>
+        <ul class="sg-list">
+          <li>AWS</li><li>Kubernetes</li><li>Linux</li><li>Infrastructure Operations</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sg-title">Professional Skills</p>
+        <ul class="sg-list">
+          <li>Problem Solving</li><li>Team Collaboration</li><li>Stakeholder Communication</li><li>Project Ownership</li><li>Continuous Learning</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <h2>Education</h2>
+    <div class="trole">B.Tech, Computer Science and Engineering — Data Science</div>
+    <div class="torg">Madanapalle Institute of Technology and Science · CGPA 7.6 · 2025</div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <h2>What I'm Looking For</h2>
+    <div class="focus-list">
+      <div class="focus-item">
+        <span class="mark">＋</span>
+        <div><h3>Data Science</h3><p>Roles that put my Data Science degree to work directly — analysis, forecasting, and with a strong foundation in Python, data analysis, machine learning, and statistical thinking, I enjoy solving real-world problems using data. My experience in cloud, DevOps, and observability also gives me a practical understanding of working with real-world systems and data, allowing me to build solutions that are both analytical and impactful..</p></div>
+      </div>
+      <div class="focus-item">
+        <span class="mark">＋</span>
+        <div><h3>Site Reliability Engineering</h3><p>I am well-suited for Site Reliability Engineering roles because I have hands-on experience with Kubernetes, Dynatrace, monitoring, observability, and incident management. I enjoy troubleshooting complex issues, improving system reliability, and automating operational tasks. My experience working with teams to resolve real-world infrastructure challenges has strengthened my problem-solving, collaboration, and ownership skills.</p></div>
+      </div>
+      <div class="focus-item">
+        <span class="mark">＋</span>
+        <div><h3>Production Support / Infrastructure Operations</h3><p>I am well-suited for Production Support and Infrastructure Operations roles because I have hands-on experience with monitoring, incident troubleshooting, Dynatrace, and application infrastructure. I am comfortable investigating production issues, collaborating with different teams, and working under pressure to restore services and maintain system reliability. My problem-solving mindset and willingness to learn new technologies help me adapt quickly to complex operational environments.</p></div>
+      </div>
+      <div class="focus-item">
+        <span class="mark">＋</span>
+        <div><h3>Observability Engineer</h3><p>I’m interested in Observability Engineering because I enjoy understanding what is happening behind the scenes in complex systems. My experience with Dynatrace has given me exposure to monitoring application and infrastructure health, analyzing metrics and logs, and investigating issues through observability data. I’m particularly interested in turning system telemetry into actionable insights that help teams detect problems early and build more reliable applications.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <h2>Articles</h2>
+    <div class="article-list">
+      <article class="article-item">
+        <div class="tdate">Insights2Techinfo</div>
+        <a href="https://insights2techinfo.com/ai-driven-incident-response-and-management/" target="_blank" rel="noopener noreferrer">
+          <h3>AI-DRIVEN INCIDENT RESPONSE AND MANAGEMENT</h3>
+        </a>
+        <p>The aggressive growth of the technologies and the growing dependency on the networks have put the focus on proper handling of the threats and incidents in the current advanced risky world. Inadequate measures of the traditional model of incident response are that they do not address today’s rapid types of attacks; typically, these methodologies imply manual actions. This paper discusses on how AI holds the promise in improving responses to and management of incidents. With the applied AI automation, machine learning, and threat intelligence, the organizations are can enhance their level of security incident detection, analysis and mitigation. The implementation of artificial intelligence in handling incidents promotes growth and efficiency of the decision-making systems not mentioning the boost in effectiveness in threat identification and handling. This article provides an understanding of factors that go with AI-driven incident response systems, their advantages, disadvantages, and their effects on ethical concerns that are relevant in current security environments. Written during the AI research internship at CCRI Lab, Asia University, Taiwan.</p>
+      </article>
+      <article class="article-item">
+        <div class="tdate">Insights2Techinfo</div>
+        <a href="https://insights2techinfo.com/enhancing-customer-service-in-finance-with-ai-chatbots/" target="_blank" rel="noopener noreferrer">
+          <h3>ENHANCING CUSTOMER SERVICE IN FINANCE WITH AI CHATBOTS</h3>
+        </a>
+        <p>In today’s world of AI and fintech, banks and all other financial institutions relate with their clients in a different paradigm. This paper aims to research the role of chatbots, backed by artificial intelligence, in the improvement of consumers’ experience in the financial industry. The NLP algorithms that they use allow for the completion of a task like responding to a query you have or providing a recommendation based on your prior purchases completed anonymously via their web pages twenty-four seven in most cases. This means that these chatbots provide one to one services at any time of the day, and that makes it ideal in regard to customer satisfaction and operationality. Faster response rate enables clients to receive feedback in the shortest time possible and accurate responses to questions improve customers’ loyalty resulting to enhanced profitability for banks. Written during the AI research internship at CCRI Lab, Asia University, Taiwan.</p>
+      </article>
+      <article class="article-item">
+        <div class="tdate">Insights2Techinfo</div>
+        <a href="https://insights2techinfo.com/ai-in-fraud-prevention-and-financial-security/" target="_blank" rel="noopener noreferrer">
+          <h3>AI IN FRAUD PREVENTION AND FINANCIAL SECURITY</h3>
+        </a>
+        <p>As for the primary intent of this article, it is to reveal how the development of the AI changed its approaches in maintaining the finance security and fraud prevention while identifying the positions that used the technologies to utilize the AI in fraudulent activities detection. It is also a welcome develop as the financial maladies seek to cope up with other complex threats whose existence cannot be identified through conventional approaches. To such challenges AI comes as the tool that enable researchers to analyze big data and look for such patterns. There are explanations of several AI technologies mentioned in the article with reference to machine learning, deep learning, and natural language processing that has revolutionalised fraud control. It also centers on the choices about what is right and wrong and on how AI, bearing on financial safety, might be advanced even more. Once the AI incorporates into the financial systems it enhances security thus being a preventive measure towards fraud and brings reliability of the financial organizations. Written during the AI research internship at CCRI Lab, Asia University, Taiwan.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-row">
+      <a href="mailto:syedraiyanalioff@gmail.com">syedraiyanalioff@gmail.com</a>
+      <a href="tel:+919100664138">+91 91006 64138</a>
+      <a href="https://www.linkedin.com/in/raiyan-ali-syed-a9668a270/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p>Bengaluru, Karnataka, India</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if(reduced || !('IntersectionObserver' in window)){
+    items.forEach(function(el){ el.classList.add('in-view'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
